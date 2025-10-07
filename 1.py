@@ -61,9 +61,15 @@ def preprocess_data(df_train, df_test):
     train_len = len(df_train)
     df_combined = pd.concat([df_train, df_test], ignore_index=True)
 
+    print(f"Data loaded. Total combined rows: {len(df_combined)}")
+    print("Overview of missing values before handling:")
+    print(df_combined.isnull().sum())
+
     # Impute missing values using the mode
     for col in ["workclass", "occupation", "native-country"]:
-        df_combined[col] = df_combined[col].fillna(df_combined[col].mode()[0])
+        df_combined[col]=df_combined[col].fillna(df_combined[col].mode()[0])
+
+    print("\nMissing values handled.")
 
     # Clean and encode the target variable
     df_combined["income"] = df_combined["income"].str.replace(r"\.", "", regex=True)
@@ -103,7 +109,7 @@ if __name__ == "__main__":
     df_train, df_test = load_data()
     X_train, X_test, y_train, y_test = preprocess_data(df_train, df_test)
 
-    print("Data loading and preprocessing successful.")
+    print("\nData preprocessing complete.")
 
     results = {}
 
