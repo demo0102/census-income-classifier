@@ -22,12 +22,6 @@ If any of the required files are missing, the script will exit and print an erro
 Python 3.9+ is recommended. Install dependencies:
 
 ```bash
-pip install -r requirements.txt
-```
-
-If you don't have a `requirements.txt`, install the essentials directly:
-
-```bash
 pip install pandas numpy scikit-learn
 ```
 
@@ -76,11 +70,3 @@ Keys are in English to facilitate downstream processing/plotting.
 -   Preprocessing includes mode imputation for selected categorical features and one-hot encoding, with standardization applied to numeric features.
 -   The `adult.test` file includes a trailing period in labels; the script strips it during target cleaning.
 -   Random Forest hyperparameter tuning uses a small grid for speed; expand it if you need better performance.
-
-### Reproducibility
-
-We set `random_state=42` where applicable. For fully deterministic behavior across platforms, also set environment variables and thread controls for BLAS if needed.
-
-### License
-
-This project is provided as-is for educational purposes. The Adult dataset is owned/maintained by its original authors and the UCI repository.
